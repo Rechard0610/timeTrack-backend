@@ -58,7 +58,7 @@ const assignedProject = async (req, res, range) => {
 
     // console.log(results);
     return res.status(200).json({
-      success: false,
+      success: true,
       result: results,
     });
   } catch (err) {
