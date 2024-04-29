@@ -1,0 +1,1 @@
+import{aC as o,aB as r,a,an as u,aS as c}from"./index-ewVy9M9d.js";import{aP as n,b1 as i}from"./IdurarOs-eHlzvnv3.js";import{e as f}from"./actions-cTR2S2ig.js";const x=()=>{const t=o(),s=r();function e(){t(i())}return a.useLayoutEffect(()=>{t(n.resetState()),t(f.resetState())},[]),a.useEffect(()=>{e(),s("/login")},[]),u.jsx(c,{})};export{x as default};

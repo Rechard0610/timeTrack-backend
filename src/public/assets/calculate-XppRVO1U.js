@@ -1,0 +1,1 @@
+import{a0 as e}from"./ErpApp-AJk95zmD.js";const r={add:(u,a)=>e(u).add(a).value,sub:(u,a)=>e(u).subtract(a).value,multiply:(u,a)=>e(u).multiply(a).value,divide:(u,a)=>e(u).divide(a).value},l=r;export{l as c};

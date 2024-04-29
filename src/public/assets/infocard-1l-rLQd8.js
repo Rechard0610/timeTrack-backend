@@ -1,0 +1,1 @@
+import{an as r}from"./index-ewVy9M9d.js";import{C as s}from"./index-VpG7vA6I.js";const n=({label:e,value:t})=>r.jsx(s,{title:e,bordered:!1,children:r.jsx("p",{className:"text-[green] text-[20px]",children:t})});export{n as I};

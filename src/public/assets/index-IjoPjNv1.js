@@ -1,0 +1,1 @@
+import{an as t}from"./index-ewVy9M9d.js";import{G as a}from"./ErpApp-7Wu0aHhn.js";import{aJ as r}from"./IdurarOs-eHlzvnv3.js";const{Content:i}=r;function m({children:o}){return t.jsx(a,{children:t.jsx(i,{className:"whiteBox shadow layoutPadding",style:{margin:"30px auto",width:"100%",maxWidth:"1100px",minHeight:"600px"},children:o})})}export{m as E};
