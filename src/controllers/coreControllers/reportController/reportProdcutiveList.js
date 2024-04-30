@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 const UserDataModel = mongoose.model('UserData');
 const SurveyModel = mongoose.model('Survey');
+const WeeklyTimeModel = mongoose.model('WeeklyTime');
 
 const reportProdcutiveList = async (req, res, range) => {
   const { startDate, endDate } = range;
-
+  const { Client, Project, Assigne, searchValue } = req.body;
   // console.log(new Date(startDate));
   // console.log(new Date(endDate));
 
@@ -157,10 +158,47 @@ const reportProdcutiveList = async (req, res, range) => {
       model: 'Admin',
     });
 
+    const profitabilityResults = await WeeklyTimeModel.aggregate([
+      {
+        $match: {
+          created: {
+            $gte: new Date(startDate),
+            $lte: new Date(endDate),
+          },
+        },
+      },
+      {
+        $project: {
+          userId: 1,
+          hours: { $toInt: { $arrayElemAt: [{ $split: ['$billabletime', ':'] }, 0] } },
+          minutes: { $toInt: { $arrayElemAt: [{ $split: ['$billabletime', ':'] }, 1] } },
+        },
+      },
+      {
+        $addFields: {
+          total_seconds: {
+            $sum: [{ $multiply: ['$hours', 3600] }, { $multiply: ['$minutes', 60] }],
+          },
+        },
+      },
+      {
+        $group: {
+          _id: '$userId',
+          total: { $sum: '$total_seconds' },
+        },
+      },
+    ]);
+
+    const profivilityAllResult = await WeeklyTimeModel.populate(profitabilityResults, {
+      path: '_id',
+      model: 'Admin',
+    });
+
     return res.status(200).json({
       success: true,
       activityAllResult,
       productivityAllResult,
+      profivilityAllResult,
     });
   } catch (err) {
     console.error(err);
